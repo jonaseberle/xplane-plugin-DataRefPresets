@@ -14,36 +14,80 @@ return {
     --     },
     ["_my"] = {
         ["_includes"] = {
-            "atmosphere:unhaze",
+--             "atmosphere:unhaze",
             "lights+",
-            "rain-",
+--             "rain-",
             "albedo",
-            "ozone:blue-",
-            "water:ungloss",
+--             "ozone:blue-",
+--             "water:ungloss",
             "stars+",
+--             "night HUD brightness++",
+            "bloom Maya",
+            "bloom--",
+            "bloomexpo-",
+            --"shadows on clouds",
         }
     },
+--     ["acf/_cdi_auto_crs_gps0"] = {
+--         ["acf/_cdi_auto_crs_gps0"] = 0,
+--     },
+    ["spill_fog"] = {
+        ["sim/private/controls/lights/do_spill_fog"] = 1,
+    },
+    ["shadows on clouds"] = {
+        ["sim/private/controls/new_clouds/lighting_mode"] = 1,
+    },
+    ["bloom Maya"] = {
+        ["sim/private/controls/hdr/bloom_lo"] = 0.214,
+        ["sim/private/controls/hdr/bloom_hi"] = 0.856,
+    },
+    ["bloom Blah.lua"] = {
+        ["sim/private/controls/hdr/bloom1"] = -3,
+        ["sim/private/controls/hdr/bloom_end_mip"] = 7,
+        ["sim/private/controls/hdr/bloom_exponent"] = 0.7,
+        ["sim/private/controls/hdr/bloom_hi"] = 4,
+    },
+    ["bloom-"] = {
+        ["sim/private/controls/hdr/bloom1"] = -9,
+    },
+    ["bloom--"] = {
+        ["sim/private/controls/hdr/bloom1"] = -10,
+    },
+    ["bloomexpo-"] = {
+        ["sim/private/controls/hdr/bloom_exponent"] = 0.8,
+    },
+    ["bloomexpo--"] = {
+        ["sim/private/controls/hdr/bloom_exponent"] = 0.3,
+    },
+    ["cockpits:lighter"] = { -- by RandomUser https://forums.x-plane.org/index.php?/forums/topic/306626-some-x-plane-12-visual-tweaks/
+        ["sim/private/controls/skyc/shadow_level_clean"] = 0.5,
+        ["sim/private/controls/skyc/shadow_level_hialt"] = 0.5,
+        ["sim/private/controls/skyc/shadow_level_mount"] = 0.5,
+    },
+    ["night HUD brightness+"] = {
+        ["sim/cockpit2/electrical/HUD_brightness_attenuation_ref_nits"] = 100.,
+    },
     -- Bishop_DE https://discord.com/channels/842725192119353354/874557875824001095/1164966272728039444
-    ["tonemap+"] = {
-    -- can't be set:
---         ["sim/private/controls/lighting/E_sun_lx"] = 138459.02,
---         ["sim/private/controls/atmo/ozone_center"] = 22349.9,
---         ["sim/private/controls/atmo/ozone_width"] = 35660.71,
---         ["sim/private/controls/cubemap/z_offset"] = 1.0,
---         ["sim/private/controls/cloud/temporal_alpha"] = 0.5,
---         ["sim/private/controls/autoexposure/gain_lo"] = 0.5,
-        ["sim/private/controls/tonemap/blend"] = 0.4,
-    },
-    ["tonemap++"] = {
-    -- can't be set:
---         ["sim/private/controls/lighting/E_sun_lx"] = 138459.02,
---         ["sim/private/controls/atmo/ozone_center"] = 22349.9,
---         ["sim/private/controls/atmo/ozone_width"] = 35660.71,
---         ["sim/private/controls/cubemap/z_offset"] = 1.0,
---         ["sim/private/controls/cloud/temporal_alpha"] = 0.5,
---         ["sim/private/controls/autoexposure/gain_lo"] = 0.5,
-        ["sim/private/controls/tonemap/blend"] = 0.7,
-    },
+--     ["tonemap+"] = {
+--     -- can't be set:
+-- --         ["sim/private/controls/lighting/E_sun_lx"] = 138459.02,
+-- --         ["sim/private/controls/atmo/ozone_center"] = 22349.9,
+-- --         ["sim/private/controls/atmo/ozone_width"] = 35660.71,
+-- --         ["sim/private/controls/cubemap/z_offset"] = 1.0,
+-- --         ["sim/private/controls/cloud/temporal_alpha"] = 0.5,
+-- --         ["sim/private/controls/autoexposure/gain_lo"] = 0.5,
+--         ["sim/private/controls/tonemap/blend"] = 0.4,
+--     },
+--     ["tonemap++"] = {
+--     -- can't be set:
+-- --         ["sim/private/controls/lighting/E_sun_lx"] = 138459.02,
+-- --         ["sim/private/controls/atmo/ozone_center"] = 22349.9,
+-- --         ["sim/private/controls/atmo/ozone_width"] = 35660.71,
+-- --         ["sim/private/controls/cubemap/z_offset"] = 1.0,
+-- --         ["sim/private/controls/cloud/temporal_alpha"] = 0.5,
+-- --         ["sim/private/controls/autoexposure/gain_lo"] = 0.5,
+--         ["sim/private/controls/tonemap/blend"] = 0.7,
+--     },
     ["ozone:blue-"] = {
         ["sim/private/controls/atmo/ozone_r"] = 2.2911,
         ["sim/private/controls/atmo/ozone_g"] = 1.5404,
@@ -58,6 +102,19 @@ return {
         ["sim/private/controls/atmo/ozone_r"] = 0,
         ["sim/private/controls/atmo/ozone_g"] = 1.9,
         ["sim/private/controls/atmo/ozone_b"] = 1,
+    },
+    ["rain-"] = {
+         ["sim/private/controls/rain/intensity_power"] = 0.5,
+         ["sim/private/controls/rain/intensity_scale"] = 0.7,
+         ["sim/private/controls/rain/scale"] = 0.5,
+--          ["sim/private/controls/rain/acceleration_factor"] = 0.01,
+    },
+    ["rain:forces-"] = {
+        -- https://forums.x-plane.org/index.php?/forums/topic/288184-wiper-effective-only-under-100-knots-of-speed-or-below-80-100-feet-of-altitude/&page=2#comment-2668038
+        ["sim/private/controls/rain/force_factor"] = 0.05,
+    },
+    ["rain:forces+"] = {
+        ["sim/private/controls/rain/force_factor"] = 0.2,
     },
     ["rain:kill"] = {
         ["sim/private/controls/rain/kill_3d_rain"] = 1,
@@ -198,12 +255,6 @@ return {
     },
     ["stars++"] = {
         ["sim/private/controls/stars/gain_photometric"] = 500,
-    },
-    ["rain-"] = {
-         ["sim/private/controls/rain/intensity_power"] = 0.5,
-         ["sim/private/controls/rain/intensity_scale"] = 0.7,
-         ["sim/private/controls/rain/scale"] = 0.5,
---          ["sim/private/controls/rain/acceleration_factor"] = 0.01,
     },
 --     ["clouds:WClouds 1"] = {
 --         ["sim/private/controls/new_clouds/low_freq_rat"] = 14,
