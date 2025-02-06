@@ -386,6 +386,18 @@ function dataRefPresets_imgui_callback(wnd, x, y)
             set("sim/private/controls/scattering/multi_rat",multiSliderNewVal)
         end
 
+        local bloom = get("sim/private/controls/hdr/bloom1")
+        local bloomSliderChanged, bloomSliderNewVal = imgui.SliderFloat("bloom",bloom,-100,-1,"%.1f")
+        if bloomSliderChanged then
+            set("sim/private/controls/hdr/bloom1",bloomSliderNewVal)
+        end
+
+        local bloomexpo = get("sim/private/controls/hdr/bloom_exponent")
+        local bloomexpoSliderChanged, bloomexpoSliderNewVal = imgui.SliderFloat("bloomexpo",bloomexpo,0,25,"%.1f")
+        if bloomexpoSliderChanged then
+            set("sim/private/controls/hdr/bloom_exponent",bloomexpoSliderNewVal)
+        end
+
         imgui.EndTabItem()
     end
 
@@ -504,18 +516,7 @@ function dataRefPresets_imguiTest_callback()
     --imgui.PopStyleColor()
 end
 
--- function dataRefPresets_testClick_callback(x, y, z, zz, zzz)
---     log ({x, y, z, zz, zzz, RESUME_MOUSE_CLICK, MOUSE_WHEEL_NUMBER})
---     RESUME_MOUSE_CLICK = false
---     return true
--- end
-
 function dataRefPresets_openSettingsWindow()
---     local aaa = float_wnd_create(SCREEN_WIDTH, SCREEN_HEIGHT, 0, true)
---     float_wnd_set_position(aaa, 0, 0)
---     float_wnd_set_imgui_builder(aaa, "dataRefPresets_imguiTest_callback")
---     float_wnd_set_onclick(aaa, "dataRefPresets_testClick_callback")
-
     if settings_wnd ~= nil then
         float_wnd_destroy(settings_wnd)
         return
